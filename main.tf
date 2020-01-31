@@ -1,4 +1,4 @@
-resource "azurerm_sql_server" "DatabaseServerPasionPorLosBits" {
+resource "azurerm_sql_server" "sql_server" {
   name                         =  var.database_server_name
   resource_group_name          =  var.resource_group
   location                     = var.location
@@ -9,11 +9,11 @@ resource "azurerm_sql_server" "DatabaseServerPasionPorLosBits" {
   tags = var.tags
 }
 
-resource "azurerm_sql_database" "DatabaseInstancePasionPorLosBits" {
+resource "azurerm_sql_database" "sql_server_database" {
   name                = var.database_name
   resource_group_name = var.resource_group
   location            = var.location
-  server_name         = azurerm_sql_server.DatabaseServerPasionPorLosBits.name
+  server_name         = azurerm_sql_server.sql_server.name
   edition = var.sqlserver_edition
 
   tags = var.tags
